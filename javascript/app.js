@@ -24,16 +24,12 @@ var busImages = [
   var rightBusImage = document.querySelector('#right_bus_img');
   var groupImageSection = document.getElementById('all_bus');
   var buses = [];
-  var votes = 0;
-  var clicks = 0;
-  var totalClicks = 1;
+ 
 
 
 function Bus(name){
     this.name = name;
     this.urlImage = `images/${this.name}.jpg`;
-    this.votes = votes ;
-    this.clicks = clicks;
     buses.push(this);
   }
   console.log(Bus);
@@ -73,19 +69,7 @@ function Bus(name){
   pickRandomImages();
 
   
-  function clickImage(j){
-if(j.target.id === 'left-img' || j.target.id === 'right-img'){
-    pickRandomImages();
-    totalClicks();
-
-}
-if (totalClicks === 6){
-    leftBusImage.remove();
-    rightBusImage.remove();
-    centerBusImage.remove();
-}
-  }
-  groupImageSection.addEventListener('click' , clickImage);
+ 
 
 
   function randomNumber(min, max) {
