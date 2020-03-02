@@ -7,12 +7,21 @@ h1 {
     color: purple;
     padding: 5%;
 }
-#imgz{
-  column-count: 3;
-  display:inline-block;
-  float:left;
+#all_images{
+
+    text-align: center;
+    max-height: 300px;
+  max-width: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+
 }
-#leftImage
+img{
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+/* #leftImage
 {
 float: left;
 padding: 10px;
@@ -27,7 +36,7 @@ padding: 10px;
 display: inline-block;
 padding: 10px;
 
-}
+} */
 #buttons {
     background-color: purple; 
     padding:20px 10px;

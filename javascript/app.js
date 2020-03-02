@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 var busImages = [
     'bag.jpg',
@@ -15,7 +15,7 @@ var busImages = [
     'tauntaun.jpg',
     'unicorn.jpg',
     'usb.gif',
-    'water-can.jpg.',
+    'water-can.jpg',
     'wine-glass.jpg',
   ];
 
@@ -24,17 +24,25 @@ var busImages = [
   var rightBusImage = document.querySelector('#right_bus_img');
   var groupImageSection = document.getElementById('all_bus');
   var buses = [];
+  var totalClicks = 0;
+  var label = [];
+  var vote = [];
  
 
 
 function Bus(name){
     this.name = name;
-    this.urlImage = `images/${this.name}.jpg`;
+    this.urlImage = `images/${this.name}`;
+    this.view = 0;
+    this.click = 0;
     buses.push(this);
   }
   console.log(Bus);
+  for(var i = 0; i < busImages.length ; i++){
+    new Bus (busImages[i]);
+  }
 
-
+  pickRandomImages();
 
   function pickRandomImages(){
     var leftImageRandom =  buses[randomNumber(0 , buses.length-1 )];
@@ -44,34 +52,91 @@ function Bus(name){
     leftBusImage.setAttribute('src' , leftImageRandom.urlImage);
     leftBusImage.setAttribute('alt' , leftImageRandom.name);
     centerBusImage.setAttribute('src' , centerImageRandom.urlImage);
-    centerBustImage.setAttribute('alt' , centerImageRandom.name);
+    centerBusImage.setAttribute('alt' , centerImageRandom.name);
     rightBusImage.setAttribute('src' , rightImageRandom.urlImage);
-    rightBusImage.setAttribute('alt' ,rightImageRandom.name);
+    rightBusImage.setAttribute('alt' ,rightImageRandom.name); 
+
     while(leftBusImage === centerBusImage){
         centerImageRandom = randomNumber();
     }
 
 
-    while(rightBusImage === centerBusImage){
+    while(rightBusImage === centerBusImage ){
         rightImageRandom = randomNumber();
+    } 
+    while(rightBusImage ===leftBusImage){
+      leftImageRandom = randomNumber();
     }
 
-    while(rightBusImage === leftBusImage){
-        leftImageRandom = randomNumber();
-    }
-    
+  
+  console.log(buses);
+}
+
+  function clickImage(event){
+      console.log('hi');
+    if (event.target.id === 'left_bus_img' || event.target.id === 'right_bus_img' || event.target.id=== 'center_bus_img'){
+    pickRandomImages();
+    totalClicks++ ;
+    console.log(clickImage);
+}
+if (totalClicks === 25){
+leftBusImage.remove();
+centerBusImage.remove();
+rightBusImage.remove();
+console.log('done');
+}
+
+}
+document.getElementById("all_images").addEventListener('click' , clickImage);
+
+function render (){
+var ulEl = document.getElementById('result');
+// var z = [];
+for (var i =0 ; i <busImages.length ; i++){
+  var liE1 = document.createElement('li');
+  liE1.textContent = `${busImages[i].name} has ${busImages[i].click} click and ${busImages[i].view}`;
+  ulEl.appendChild(liE1);
+}
+render();
+}
+
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 
-  for(var i = 0; i< busImages.length ; i++){
-    new Bus (busImages[i]);
+function renderChartResults(){
+  var busNames = [];
+  var busClicks = [];
+  for(var i = 0 ; i < buses.length ; i++){
+    var busName = buses[i].name;
+    busNames.push(busName);
+    var busLikes = buses[i].likes;
+    busesClicks.push(busLikes);
   }
-  pickRandomImages();
+  console.log(busLikes);
 
-  
- 
-
-
-  function randomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: label,
+    datasets: [{
+      label: 'Bus Mall',
+      data: vote,
+      backgroundColor:'purple' ,
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
   }
+});
+
