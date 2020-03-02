@@ -25,6 +25,9 @@ var busImages = [
   var groupImageSection = document.getElementById('all_bus');
   var buses = [];
   var totalClicks = 0;
+  // var leftBusThatIsOnThePage;
+  // var rightBusThatIsOnThePage;
+  // var centerBusThatIsOnThePage;
   var label = [];
   var vote = [];
  
@@ -105,38 +108,38 @@ function randomNumber(min, max) {
 }
 
 
-function renderChartResults(){
-  var busNames = [];
-  var busClicks = [];
-  for(var i = 0 ; i < buses.length ; i++){
-    var busName = buses[i].name;
-    busNames.push(busName);
-    var busLikes = buses[i].likes;
-    busesClicks.push(busLikes);
-  }
-  console.log(busLikes);
+// function renderChartResults(){
+//   var busNames = [];
+//   var busClicks = [];
+//   for(var i = 0 ; i < buses.length ; i++){
+//     var busName = buses[i].name;
+//     busNames.push(busName);
+//     var busLikes = buses[i].likes;
+//     busesClicks.push(busLikes);
+//   }
+//   console.log(busLikes);
 
-  var ctx = document.getElementById('myChart').getContext('2d');
-  var myChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: label,
-    datasets: [{
-      label: 'Bus Mall',
-      data: vote,
-      backgroundColor:'purple' ,
-      borderColor: 'rgba(255, 99, 132, 1)',
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
-    }
-  }
-});
+//   var ctx = document.getElementById('myChart').getContext('2d');
+//   var myChart = new Chart(ctx, {
+//   type: 'bar',
+//   data: {
+//     labels: label,
+//     datasets: [{
+//       label: 'Bus Mall',
+//       data: vote,
+//       backgroundColor:'purple' ,
+//       borderColor: 'rgba(255, 99, 132, 1)',
+//       borderWidth: 1
+//     }]
+//   },
+//   options: {
+//     scales: {
+//       yAxes: [{
+//         ticks: {
+//           beginAtZero: true
+//         }
+//       }]
+//     }
+//   }
+// });
 
