@@ -96,7 +96,7 @@ if (totalClicks === 25){
   pickRandomImages();
   totalClicks++;
 }
-
+//ADD SOMETHING
 
 //""
 document.getElementById('allProduct').addEventListener('click' , clickImage);
