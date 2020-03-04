@@ -98,7 +98,7 @@ if (totalClicks === 25){
 }
 
 
-
+//""
 document.getElementById('allProduct').addEventListener('click' , clickImage);
 
 
