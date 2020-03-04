@@ -21,6 +21,16 @@ img{
     height: 200px;
     float: left;
 }
+
+footer {
+    text-align: center;
+    color: purple;
+    padding: 5%;
+
+}
+
+
+
 /* #leftImage
 {
 float: left;
