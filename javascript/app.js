@@ -76,32 +76,31 @@ function pickRandomImages(){
 
 function clickImage(event){
   console.log('hjkhkj')
-if(event.target.id === 'left_img' || event.target.id === 'right_img' || event.target.id === 'center_img'){
-  totalClicks++;
-  leftImageRandom.votes++;
-  centerImageRandom.votes++;
-  rightImageRandom.votes;
-  pickRandomImages();
+if(event.target.id === 'left_img')
+ { leftImageRandom.votes++;}
 
-}
-// if (e.target.id === 'left_img'){
-//   leftImageRandom.clicks++;
-// }
-// if (e.target.id === 'right_img'){
-//   rightImageRandom.clicks++;
-// }
-// if (e.target.id === 'center_img'){
-//   centerImageRandom.clicks++;
-// }
+ 
+else if (event.target.id === 'right_img') 
+{rightImageRandom.votes++;}
+
+else if ( event.target.id === 'center_img')
+  
+{centerImageRandom.votes++;}
+ 
 if (totalClicks === 25){
   leftBusImage.remove();
   rightBusImage.remove();
   centerBusImage.remove();
   summary();
 }
+  pickRandomImages();
+  totalClicks++;
 }
+
+
+
 document.getElementById('allProduct').addEventListener('click' , clickImage);
-// groupImageSection.addEventListener('click' , clickImage);
+
 
 function summary(){
   var ulEl = document.getElementById('products');
